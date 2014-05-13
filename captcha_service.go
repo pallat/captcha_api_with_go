@@ -1,9 +1,23 @@
 package captcha
 
 
-type CaptchaService struct {}
+type CaptchaService struct {
+  rand Randomizer
+}
 
+type  Randomizer interface {
+  Intn(int) int
+}
 
 func NewCaptchaService() *CaptchaService {
   return new(CaptchaService)
+}
+
+func (s *CaptchaService) SetRandom(rand Randomizer) {
+  s.rand = rand
+}
+
+func (s *CaptchaService) GetCaptcha() Captcha {
+  captcha := Captcha{s.rand.Intn(1) + 1, s.rand.Intn(9), s.rand.Intn(2) + 1, s.rand.Intn(9)}
+  return captcha
 }
