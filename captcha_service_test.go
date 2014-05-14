@@ -1,12 +1,25 @@
 package captcha
 
-import "testing"
-import "reflect"
+import (
+  "testing"
+  "reflect"
+  "github.com/stretchr/testify/assert"
+  ."github.com/roofimon/captcha"
+)
 
 type MyRandom struct { }
 
 func (m MyRandom) Intn(n int) int {
-  return 2
+  return 0 
+}
+
+
+func TestTestify(t *testing.T) {
+  var service *CaptchaService = NewCaptchaService()
+  myRandom := new(MyRandom)
+  service.SetRandom(myRandom)
+  captcha := service.GetCaptcha()
+  assert.Equal(t, "One + 1", captcha.ToString())
 }
 
 func TestNewCaptchaService(t *testing.T) {
