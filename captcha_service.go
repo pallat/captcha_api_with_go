@@ -4,10 +4,6 @@ type CaptchaService struct {
   rand Randomizer
 }
 
-type  Randomizer interface {
-  Intn(int) int
-}
-
 func NewCaptchaService() *CaptchaService {
   return new(CaptchaService)
 }

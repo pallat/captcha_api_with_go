@@ -10,9 +10,8 @@ import (
 type MyRandom struct { }
 
 func (m MyRandom) Intn(n int) int {
-  return 0 
+  return 0
 }
-
 
 func TestTestify(t *testing.T) {
   var service *CaptchaService = NewCaptchaService()
@@ -38,6 +37,3 @@ func TestGetCaptcha(t *testing.T) {
     t.Errorf("return type is not Captcha %s", reflect.TypeOf(captcha))
   }
 }
-
-
-
